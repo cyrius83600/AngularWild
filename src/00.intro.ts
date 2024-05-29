@@ -39,12 +39,14 @@ export const fibonacciObservable = new Observable(function (observer) {
     let a = 0;
     let b = 1;
     let tmp = 0;
-    console.log("Fibonacci");
-    while(count < 15)
+
+    while(count < 16)
         {
             tmp = b;
             b = a + b;
+            observer.next(b);
             a = tmp;
+            count++;
         }
-    return () => b;
+    observer.complete();
 });
